@@ -29,7 +29,7 @@
     5. 축약 및 합산을 reduce로
     <script>
       const add = (a, b) => a + b;
-      function f1(limit, list) {
+      function f2(limit, list) {
         _.go(
           list,
           L.filter((a) => a % 2),
@@ -39,9 +39,25 @@
           console.log
         );
       }
-      f1(3, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+      f2(3, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
     </script>
     6. while을 range로<br />
     7. 효과를 each로 구분
+    <script>
+      function f3(end) {
+        let i = 1;
+        while (i < end) {
+          console.log(i);
+          i += 2;
+        }
+      }
+      f3(10);
+
+      function f4(end) {
+        _.go(L.range(1, end, 2), _.each(console.log));
+      }
+      f4(10);
+    </script>
+    8. 추억의 별 그리기, 구구단
   </body>
 </html>
