@@ -7,7 +7,7 @@
   </head>
   <body>
     ## 명령형 습관 지우기 - 만능 reduce? No! <br />
-    1. reduce + 복잡한 함수 + acc 보다 map + 간단한 함수 + reduce
+    1. reduce + 복잡한 함수 + acc 보다 map + 간단한 함수 + reduce <br />
     <script>
       const users = [
         { name: "AA", age: 35 },
@@ -31,7 +31,7 @@
       console.log(_.reduce(add, ages(users)));
       console.clear();
     </script>
-    2. reduce 하나 보다 map + filter + reduce
+    2. reduce 하나 보다 map + filter + reduce <br />
     <script>
       console.log(
         _.reduce((total, u) => (u.age >= 30 ? total : total + u.age), 0, users)
