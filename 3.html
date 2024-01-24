@@ -17,5 +17,38 @@
       _.go([10], L.map(fg), _.each(console.log));
       _.go([], L.map(fg), _.each(console.log));
     </script>
+    2. find 대신 L.filter 써보기
+    <script>
+      const users = [
+        { name: "AA", age: 35 },
+        { name: "BB", age: 26 },
+        { name: "CC", age: 28 },
+        { name: "CC", age: 34 },
+        { name: "EE", age: 23 },
+      ];
+      const user = _.find((u) => u.name == "BB", users);
+      if (user) {
+        console.log(user.age);
+      }
+
+      _.each(
+        console.log,
+        L.take(
+          1,
+          L.filter((u) => u.name == "BB", users)
+        )
+      );
+
+      _.go(
+        users,
+        L.filter((u) => {
+          console.log(u);
+          return u.name == "AA";
+        }),
+        L.take(1),
+        L.map((u) => u.age),
+        _.each(console.log)
+      );
+    </script>
   </body>
 </html>
