@@ -19,7 +19,7 @@
 <script>
     console.log(Object.values(obj1));
 
-    L.values = function *(obj) {
+    L.values = function* (obj) {
         for (const k in obj) {
             console.log(k);
             yield obj[k];
@@ -31,13 +31,13 @@
         L.values,
         L.map(a => a + 10),
         L.take(2),
-        _.reduce((a,b) => a + b),
+        _.reduce((a, b) => a + b),
         console.log
     );
 </script>
 2. entries<br/>
 <script>
-    L.entries = function *(obj) {
+    L.entries = function* (obj) {
         for (const k in obj) {
             yield [k, obj[k]];
         }
@@ -54,7 +54,7 @@
 </script>
 3. keys<br/>
 <script>
-    L.keys = function *(obj) {
+    L.keys = function* (obj) {
         for (const k in obj) {
             yield k;
         }
@@ -66,10 +66,31 @@
     )
 </script>
 4. 어떠한 값이든 이터러블 프로그래밍으로 다루기<br/>
+- 이터러블로 이터러블 프로그래밍<br/>
+- 객체를 제너레이터를 이용해서 이터레이터로 만들어서 이터러블 프로그래밍<br/>
+- 어떤 제너레이터든 이터레이터로 만들어서 이터러블 프로그래밍<br/>
+<script>
+    const g1 = function* (stop) {
+        let i = -1;
+        while (++i < stop) {
+            yield 10;
+            if (false) yield 20 + 30;
+            yield 30;
+        }
+    }
+    console.log([...L.take(3, g1(10))])
+    // _.each(console.log, g1(10))
+    _.go(
+        g1(10),
+        L.take(2),
+        _.reduce((a, b) => a + b),
+        console.log
+    )
+</script>
 5. object<br/>
 6. mapObject<br/>
-7. pick<br />
-8. indexBy<br />
+7. pick<br/>
+8. indexBy<br/>
 9. indexBy 된 값을 filter 하기
 </body>
 </html>
