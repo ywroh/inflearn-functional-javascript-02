@@ -88,6 +88,27 @@
     )
 </script>
 5. object<br/>
+<script>
+    const a = [['a', 1], ['b', 2], ['c', 3]];
+    const b = {a: 1, b: 2, c: 3};
+
+    const object2 = entries => _.go(
+        entries,
+        L.map(([k, v]) => ({[k]: v})),
+        _.reduce(Object.assign));
+
+    const object = entries =>
+        _.reduce((obj, [k, v]) => (
+            obj[k] = v, obj), {}, entries);
+
+    console.log(object(L.entries({b: 2, c: 3})));
+
+    let m = new Map();
+    m.set('a', 10);
+    m.set('b', 20);
+    m.set('c', 30);
+    console.log(object(m));
+</script>
 6. mapObject<br/>
 7. pick<br/>
 8. indexBy<br/>
